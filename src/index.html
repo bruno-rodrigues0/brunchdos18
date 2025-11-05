@@ -1,73 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Brunch dos 18</title>
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id="container">
-      <header>
-        <div id="banner">
-          <img src="./assets/banner.jpg" alt="Banner">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brunch 18 – Template (Sims/Sakura)</title>
+  <meta name="description" content="Site de aniversário (brunch) – HTML, CSS e JavaScript puro. Sem backend." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body data-tema="sakura">
+  <div class="bg"></div>
+  <div class="bg overlay"></div>
+
+  <!-- Topbar estilo Sims: HOME / STORE / EVENTS → aqui: Home / Menu / Agenda -->
+  <nav class="topbar" id="topbar">
+    <a href="#home" class="navlink" data-goto="#home">HOME</a>
+    <a href="#rsvp" class="navlink" data-goto="#rsvp">RSVP</a>
+    <a href="#galeria" class="navlink" data-goto="#galeria">GALLERY</a>
+    <a href="#about" class="navlink" data-goto="#home">ABOUT</a>
+  </nav>
+
+  <!-- Menu vertical (seções principais) -->
+
+  <main>
+    <!-- HERO / HOME -->
+    <section id="home" class="hero hero-landing section">
+      <div>
+        <h1 class="title-elegant">18TH BIRTHDAY<br>BRUNCH</h1>
+        <div class="countdown-card">
+          <div class="segment"><strong id="dDD">23</strong><span>DIAS</span></div>
+          <div class="divider"></div>
+          <div class="segment"><strong id="dHH">12</strong><span>HORAS</span></div>
+          <div class="divider"></div>
+          <div class="segment"><strong id="dMM">45</strong><span>MINUTOS</span></div>
+          <div class="divider"></div>
+          <div class="segment"><strong id="dSS">07</strong><span>SEGUNDOS</span></div>
         </div>
-        <div id="profile">
-          <img src="./assets/perfil.jpeg" alt="Foto de perfil">
+        <div class="cta-row">
+          <a class="btn-elegant" data-goto="#rsvp">Confirmar Presença</a>
         </div>
-        <nav id="nav">
-          <ul id="nav-ul">
-            <li class="nav-item"><a href="#">Inicio</a></li>
-            <li class="nav-item"><a href="#">Imagens</a></li>
-            <li class="nav-item"><a href="#">Perfil</a></li>
-            <li class="nav-item"><a href="#">Amigos</a></li>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" class="section">
+      <h2>Cardápio do Brunch</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Doces</h3>
+          <ul>
+            <li>Mini churros <span class="badge">favorito</span></li>
+            <li>Waffles com frutas <span class="badge" style="background:#8bc34a">veg</span></li>
+            <li>Panquecas com mel</li>
           </ul>
-        </nav>
-      </header>
-      <main>
-        <menu id="sidebar">
-          <div id="menu-content">
-            <div id="statistics">
-              <span>@mary_nada_mais</span>
-              <span><i class="fa-solid fa-circle" id="online-dot"></i> Online</span>
-              <div id="follow">
-                <div id="followers">
-                  <span>348</span>
-                  <span>Seguidores</span>
-                </div>
-                <div id="following">
-                  <span>137</span>
-                  <span>Seguindo</span>
-                </div>
-              </div>
-            </div>
-            <nav id="menu-nav">
-              <ul>
-                <li class="menu-item"><a href="#">
-                  <i class="fa-solid fa-film"></i><span>Videos</span>
-                </a></li>
-                <li class="menu-item"><a href="#"><i class="fa-solid fa-photo-film"></i><span>Fotos</span></a></li>
-                <li class="menu-item"><a href="#"><i class="fa-solid fa-film"></i><span>Videos</span></a></li>
-                <li class="menu-item"><a href="#"><i class="fa-solid fa-film"></i><span>Videos</span></a></li>
-              </ul>
-              <hr>
-              <ul>
-                <li class="menu-item"><a href="#"><i class="fa-solid fa-film"></i><span>Videos</span></a></li>
-                <li class="menu-item"><a href="#"><i class="fa-solid fa-film"></i><span>Videos</span></a></li>
-                <li class="menu-item"><a href="#"><i class="fa-solid fa-film"></i><span>Videos</span></a></li>
-                <li class="menu-item"><a href="#"><i class="fa-solid fa-film"></i><span>Videos</span></a></li>
-              </ul>
-            </nav>
-          </div>
-        </menu>
-        <div id="content">
-          [CONTENT]
         </div>
-      </main>
-    </div>
-  <script src="https://kit.fontawesome.com/19ad99d8f1.js" crossorigin="anonymous"></script>
+        <div class="card">
+          <h3>Salgados</h3>
+          <ul>
+            <li>Mini sanduíches (opção sem lactose)</li>
+            <li>Quiche de queijo</li>
+            <li>Tábua de frios</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Bebidas</h3>
+          <ul>
+            <li>Chá gelado de pêssego</li>
+            <li>Sucos naturais</li>
+            <li>Refrigerantes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDA / ROTEIRO -->
+    <section id="agenda" class="section">
+      <h2>Roteiro do dia</h2>
+      <div class="grid cols-3">
+        <div class="card"><strong>15:00</strong> – Recepção & fotos</div>
+        <div class="card"><strong>16:00</strong> – Quiz relâmpago</div>
+        <div class="card"><strong>17:00</strong> – Parabéns & sobremesas</div>
+      </div>
+    </section>
+
+    <!-- RSVP (sem backend → link externo) -->
+    <section id="rsvp" class="section">
+      <h2>Confirme sua presença</h2>
+      <div class="card">
+        <p>Para confirmar, use o formulário externo (Google Forms):</p>
+        <a class="pill is-active" href="https://forms.gle/" target="_blank" rel="noopener">Abrir Formulário</a>
+        <p style="margin-top:1rem">Contador sentimental 💗 (local): <strong id="fakeCount">0</strong></p>
+        <button class="pill secondary" id="btnFake">Acabei de confirmar!</button>
+      </div>
+    </section>
+
+    <!-- QUIZ localStorage -->
+    <section id="quiz" class="section">
+      <h2>Quiz: Me conhece mesmo?</h2>
+      <div class="card quiz">
+        <div id="quizBox"></div>
+        <button class="pill is-active" id="submitQuiz">Enviar respostas</button>
+        <p id="quizOut" class="subtitle" style="margin-top:1rem"></p>
+      </div>
+    </section>
+
+    <!-- RECADOS localStorage -->
+    <section id="recados" class="section">
+      <h2>Livro de Recados</h2>
+      <div class="grid cols-3">
+        <form class="card" id="formRecado">
+          <input id="nomeRec" placeholder="Seu nome" style="width:100%; padding:.7rem; border-radius:10px; border:1px solid #fff; margin-bottom:.5rem">
+          <textarea id="msgRec" placeholder="Mensagem (até 120 caracteres)" maxlength="120" style="width:100%; height:100px; padding:.7rem; border-radius:10px; border:1px solid #fff"></textarea>
+          <div style="display:flex; gap:.5rem; margin-top:.6rem">
+            <button class="pill is-active" type="submit">Publicar</button>
+            <button class="pill secondary" type="button" id="btnExport">Exportar .txt</button>
+          </div>
+        </form>
+        <div class="card" style="grid-column: span 2">
+          <ul id="listaRec" style="list-style:none; padding-left:0; display:grid; gap:.6rem;">
+            <!-- itens -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA Polaroid -->
+    <section id="galeria" class="section">
+      <h2>Galeria (polaroids)</h2>
+      <div class="polaroids" id="polas">
+        <figure style="--rot:-2.5deg"><img src="assets/p1.jpg" alt="Foto 1"><figcaption>Primeiro café</figcaption></figure>
+        <figure style="--rot:1.2deg"><img src="assets/p2.jpg" alt="Foto 2"><figcaption>GG no jogo</figcaption></figure>
+        <figure style="--rot:-1.8deg"><img src="assets/p3.jpg" alt="Foto 3"><figcaption>Dia de sol</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- PHOTOBOOTH -->
+    <section id="fotinho" class="section">
+      <h2>Photobooth</h2>
+      <div class="card">
+        <video id="cam" autoplay playsinline style="width:100%; border-radius:12px; background:#111"></video>
+        <div style="display:flex; gap:.5rem; margin-top:.5rem; flex-wrap:wrap">
+          <button class="pill is-active" id="btnFoto">Tirar foto</button>
+          <button class="pill secondary" id="btnSticker">Adicionar moldura</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section id="mapa" class="section">
+      <h2>Como chegar</h2>
+      <div class="card">
+        <p>Endereço: <strong>Rua Bevenuto Mendes Luz, 7, Bairro Jorge Amado</strong></p>
+        <div style="height:360px; border-radius:12px; overflow:hidden; border:1px solid #fff">
+          <iframe title="Local" width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3248.0634385957906!2d-42.682623459556446!3d-14.491039313703745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1762311011413!5m2!1spt-BR!2sbr"></iframe>
+        </div>
+        <div style="display:flex; gap:.5rem; margin-top:.6rem; flex-wrap:wrap">
+          <a class="pill is-active" href="https://www.google.com/maps/@-14.4908866,-42.6828671,20z?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Abrir no Maps</a>
+          <a class="pill secondary" href="https://m.uber.com/go/home?drop%5B0%5D=%7B%22addressLine1%22%3A%22Rua%20Bevenuto%20Mendes%20Luz%22%2C%22addressLine2%22%3A%22R.%20Bevenuto%20Mendes%20Luz%20-%20Pinda%C3%AD%2C%20BA%22%2C%22id%22%3A%22EjdSLiBCZXZlbnV0byBNZW5kZXMgTHV6IC0gUGluZGHDrSwgQkEsIDQ2MzYwLTAwMCwgQnJhemlsIi4qLAoUChIJQ1kJ9SOwWgcRj9X41uo7AtgSFAoSCe1G2s1mr1oHEbj_bejCbvJ2%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A-14.4908522%2C%22longitude%22%3A-42.6830636%2C%22provider%22%3A%22google_places%22%7D&marketing_vistor_id=502d5426-e9ef-4ce0-a269-b3319393befc&uclick_id=17bb444f-564e-4567-b4a4-a0ddbdb154a3" target="_blank">Chamar Uber</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Feito com 💖 em HTML/CSS/JS. Sem backend. Personalize as imagens na pasta <code>assets/</code>.</small>
+  </footer>
   <script src="./js/index.js"></script>
-  </body>
+</body>
 </html>
