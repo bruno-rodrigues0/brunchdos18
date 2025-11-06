@@ -39,10 +39,18 @@
 * {
   box-sizing: border-box;
 }
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 html,
 body {
   height: 100%;
+  max-width: 100vw;
 }
+
 body {
   margin: 0;
   font-family: Poppins, system-ui, Segoe UI, Roboto, Helvetica, Arial,
@@ -52,6 +60,8 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  position: relative;
 }
 
 /* Prevenir zoom em inputs no iOS */
