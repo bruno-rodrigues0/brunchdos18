@@ -72,6 +72,10 @@ body {
     font-size: 16px;
   }
 }
+
+a {
+  cursor: pointer;
+}
 /* BACKGROUND – substitua as URLs por suas imagens */
 .bg {
   position: fixed;
