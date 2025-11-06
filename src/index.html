@@ -9,9 +9,9 @@
   <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./css/index.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-  <!-- Firebase SDK - carregado do node_modules local -->
-  <script src="../node_modules/firebase/firebase-app-compat.js"></script>
-  <script src="../node_modules/firebase/firebase-database-compat.js"></script>
+  <!-- Firebase SDK - carregado via CDN -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 </head>
 <body data-tema="sakura">
   <div class="bg"></div>
@@ -19,13 +19,24 @@
 
   <!-- Topbar estilo Sims: HOME / STORE / EVENTS → aqui: Home / Menu / Agenda -->
   <nav class="topbar" id="topbar">
-    <a href="#menu" class="navlink" data-goto="#home">CARDAPIO</a>
-    <a href="#agenda" class="navlink" data-goto="#galeria">ROTEIRO</a>
-    <a href="#recados" class="navlink" data-goto="#home">RECADOS</a>
-    <a href="#fotinho" class="navlink" data-goto="#home">PHOTOBOOTH</a>
-    <a href="#mapa" class="navlink" data-goto="#home">LOCAL</a>
-       <a href="#faq" class="navlink" data-goto="#home">FAQ</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-menu" id="navMenu">
+      <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid rgba(255, 125, 181, 0.3);">
+        <h3 style="margin: 0; color: var(--accent); font-family: Playfair Display, serif; font-size: 1.5rem;">Brunch dos 18</h3>
+      </div>
+      <a href="#menu" class="navlink" data-goto="#menu">CARDAPIO</a>
+      <a href="#agenda" class="navlink" data-goto="#agenda">ROTEIRO</a>
+      <a href="#recados" class="navlink" data-goto="#recados">RECADOS</a>
+      <a href="#fotinho" class="navlink" data-goto="#fotinho">PHOTOBOOTH</a>
+      <a href="#mapa" class="navlink" data-goto="#mapa">LOCAL</a>
+      <a href="#faq" class="navlink" data-goto="#faq">FAQ</a>
+    </div>
   </nav>
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <!-- Menu vertical (seções principais) -->
 

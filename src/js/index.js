@@ -6,14 +6,51 @@
       set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))
     };
 
+    // ===== MENU HAMBÚRGUER =====
+    const menuToggle = $('#menuToggle');
+    const navMenu = $('#navMenu');
+    const menuOverlay = $('#menuOverlay');
+    
+    if (menuToggle && navMenu && menuOverlay) {
+      const closeMenu = () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+      
+      const openMenu = () => {
+        menuToggle.classList.add('active');
+        navMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+      
+      menuToggle.addEventListener('click', () => {
+        if (menuToggle.classList.contains('active')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+      
+      menuOverlay.addEventListener('click', closeMenu);
+      
+      // Fechar menu ao clicar em um link
+      $$('.navlink').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+    }
+
     // ===== navegação suave =====
-    $$('[data-goto]').forEach(b=>b.addEventListener('click',()=>{
+    $$('[data-goto]').forEach(b=>b.addEventListener('click',(e)=>{
+      e.preventDefault();
       const id=b.getAttribute('data-goto');
       document.querySelector(id)?.scrollIntoView({behavior:'smooth'});
       $$('#topbar .pill').forEach(p=>p.classList.remove('is-active'));
-      if(id==='#home') $('#topbar .pill:nth-child(1)').classList.add('is-active');
-      if(id==='#menu') $('#topbar .pill:nth-child(2)').classList.add('is-active');
-      if(id==='#agenda') $('#topbar .pill:nth-child(3)').classList.add('is-active');
+      if(id==='#home') $('#topbar .pill:nth-child(1)')?.classList.add('is-active');
+      if(id==='#menu') $('#topbar .pill:nth-child(2)')?.classList.add('is-active');
+      if(id==='#agenda') $('#topbar .pill:nth-child(3)')?.classList.add('is-active');
     }));
 
     // ===== tema =====
