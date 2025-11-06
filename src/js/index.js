@@ -296,6 +296,7 @@
     
     // Molduras disponíveis
     window._stickerType = 'rosa'; // moldura padrão
+    window._sticker = true; // moldura ativada por padrão
     
     const btnFoto = $('#btnFoto');
     if (btnFoto) {
@@ -305,14 +306,22 @@
         c.width = v.videoWidth; 
         c.height = v.videoHeight; 
         const ctx = c.getContext('2d');
-        ctx.drawImage(v, 0, 0);
+        
+        // Espelhar horizontalmente (corrigir inversão da câmera frontal)
+        ctx.translate(c.width, 0);
+        ctx.scale(-1, 1);
         
         // Desenhar moldura se ativada
         if (window._sticker && window._stickerType) {
           const padding = 30;
-          const cornerSize = 80;
           
           if (window._stickerType === 'rosa') {
+            // Primeiro desenha o vídeo
+            ctx.drawImage(v, 0, 0);
+            
+            // Desfazer o espelhamento para desenhar a moldura corretamente
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            
             // Moldura rosa com cantos arredondados
             ctx.strokeStyle = '#ff7db5';
             ctx.lineWidth = 35;
@@ -327,6 +336,12 @@
             ctx.arc(c.width - padding, c.height - padding, 15, 0, Math.PI * 2);
             ctx.fill();
           } else if (window._stickerType === 'coracoes') {
+            // Primeiro desenha o vídeo
+            ctx.drawImage(v, 0, 0);
+            
+            // Desfazer o espelhamento para desenhar a moldura corretamente
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            
             // Moldura com corações nos cantos
             ctx.strokeStyle = '#ff7db5';
             ctx.lineWidth = 25;
@@ -348,18 +363,92 @@
             drawHeart(c.width - padding - 20, padding - 20, 40);
             drawHeart(padding - 20, c.height - padding - 20, 40);
             drawHeart(c.width - padding - 20, c.height - padding - 20, 40);
-          } else if (window._stickerType === 'polaroid') {
-            // Moldura estilo polaroid
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, c.width, c.height);
-            ctx.drawImage(v, 40, 40, c.width - 80, c.height - 160);
+          } else if (window._stickerType === 'aniversario') {
+            // Primeiro desenha o vídeo
+            ctx.drawImage(v, 0, 0);
             
-            // Texto inferior
-            ctx.fillStyle = '#34343a';
-            ctx.font = '40px Poppins, sans-serif';
+            // Desfazer o espelhamento para desenhar a moldura corretamente
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            
+            // Moldura rosa com borda dupla
+            ctx.strokeStyle = '#ff7db5';
+            ctx.lineWidth = 30;
+            ctx.strokeRect(padding + 10, padding + 10, c.width - (padding + 10) * 2, c.height - (padding + 10) * 2);
+            
+            ctx.strokeStyle = '#ffb3d9';
+            ctx.lineWidth = 15;
+            ctx.strokeRect(padding, padding, c.width - padding * 2, c.height - padding * 2);
+            
+            // Função para desenhar flores
+            const drawFlower = (x, y, size) => {
+              // Pétalas
+              for (let i = 0; i < 5; i++) {
+                const angle = (Math.PI * 2 * i) / 5;
+                const px = x + Math.cos(angle) * size;
+                const py = y + Math.sin(angle) * size;
+                
+                ctx.fillStyle = '#ff7db5';
+                ctx.beginPath();
+                ctx.arc(px, py, size * 0.6, 0, Math.PI * 2);
+                ctx.fill();
+              }
+              
+              // Centro da flor
+              ctx.fillStyle = '#ffd700';
+              ctx.beginPath();
+              ctx.arc(x, y, size * 0.5, 0, Math.PI * 2);
+              ctx.fill();
+            };
+            
+            // Desenhar flores nos quatro cantos
+            const flowerSize = 20;
+            const flowerOffset = 50;
+            
+            drawFlower(flowerOffset, flowerOffset, flowerSize);
+            drawFlower(c.width - flowerOffset, flowerOffset, flowerSize);
+            drawFlower(flowerOffset, c.height - flowerOffset, flowerSize);
+            drawFlower(c.width - flowerOffset, c.height - flowerOffset, flowerSize);
+            
+            // Desenhar o número "18" no topo
+            ctx.fillStyle = '#ff7db5';
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 8;
+            ctx.font = 'bold 120px Poppins, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('Brunch 18 💗', c.width / 2, c.height - 60);
+            ctx.textBaseline = 'top';
+            
+            const text = '18';
+            const textY = 60;
+            
+            // Borda branca
+            ctx.strokeText(text, c.width / 2, textY);
+            // Texto rosa
+            ctx.fillText(text, c.width / 2, textY);
+            
+            // Adicionar estrelinhas ao redor do número
+            const drawStar = (x, y, size) => {
+              ctx.fillStyle = '#ffd700';
+              ctx.beginPath();
+              for (let i = 0; i < 5; i++) {
+                const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
+                const radius = i % 2 === 0 ? size : size / 2;
+                const px = x + Math.cos(angle) * radius;
+                const py = y + Math.sin(angle) * radius;
+                if (i === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+              }
+              ctx.closePath();
+              ctx.fill();
+            };
+            
+            drawStar(c.width / 2 - 120, textY + 60, 15);
+            drawStar(c.width / 2 + 120, textY + 60, 15);
+            drawStar(c.width / 2 - 100, textY + 20, 12);
+            drawStar(c.width / 2 + 100, textY + 20, 12);
           }
+        } else {
+          // Sem moldura, apenas captura
+          ctx.drawImage(v, 0, 0);
         }
         
         c.toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'brunch-selfie.png'; a.click(); });
@@ -377,8 +466,8 @@
           window._stickerType = 'coracoes';
           alert('Moldura Corações ativada! 💕');
         } else if (window._stickerType === 'coracoes') {
-          window._stickerType = 'polaroid';
-          alert('Moldura Polaroid ativada! 📸');
+          window._stickerType = 'aniversario';
+          alert('Moldura de Aniversário ativada! 🎂✨');
         } else {
           window._sticker = false;
           window._stickerType = null;
