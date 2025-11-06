@@ -1,0 +1,27 @@
+{
+  "name": "brunchdos18",
+  "version": "1.0.0",
+  "description": "Site do meu brunch",
+  "keywords": [
+    "bruch",
+    "birthday"
+  ],
+  "homepage": "https://github.com/bruno-rodrigues0/brunchdos18#readme",
+  "bugs": {
+    "url": "https://github.com/bruno-rodrigues0/brunchdos18/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruno-rodrigues0/brunchdos18.git"
+  },
+  "license": "MIT",
+  "author": "Bruno Rodrigues, Mary Vitória",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "firebase": "^12.5.0"
+  }
+}

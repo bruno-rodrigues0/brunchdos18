@@ -408,3 +408,101 @@ footer {
   font-weight: 700;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+
+/* ===== ESTILOS RSVP / CONFIRMADOS ===== */
+#listaConfirmados {
+  display: grid;
+  gap: 0.8rem;
+}
+
+#listaConfirmados .card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#listaConfirmados .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(255, 125, 181, 0.2);
+}
+
+#totalConfirmados {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0.3rem 0.7rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+
+#formRSVP input,
+#formRSVP textarea {
+  font-family: Poppins, sans-serif;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--fg);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition: all 0.2s;
+}
+
+#formRSVP input:focus,
+#formRSVP textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 125, 181, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+#formRSVP button[type="submit"] {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#formRSVP button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 125, 181, 0.3);
+}
+
+/* Animação para novos itens */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#listaConfirmados .card {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Scrollbar customizada para a lista */
+#listaConfirmados::-webkit-scrollbar {
+  width: 8px;
+}
+
+#listaConfirmados::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+#listaConfirmados::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+#listaConfirmados::-webkit-scrollbar-thumb:hover {
+  background: #ff5599;
+}
+
