@@ -50,6 +50,17 @@ body {
   color: var(--fg);
   background: linear-gradient(180deg, var(--bg-2), var(--bg));
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevenir zoom em inputs no iOS */
+@supports (-webkit-touch-callout: none) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
 }
 /* BACKGROUND – substitua as URLs por suas imagens */
 .bg {
@@ -64,6 +75,15 @@ body {
   background-position: center center;
   filter: saturate(105%) contrast(102%);
   will-change: transform;
+}
+
+/* Background responsivo para mobile */
+@media (max-width: 768px) {
+  .bg {
+    background-size: cover;
+    background-position: center center;
+    height: 200%;
+  }
 }
 .bg.overlay {
   z-index: -1;
@@ -97,6 +117,114 @@ body {
     rgba(255, 255, 255, 0.35)
   );
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  z-index: 1000;
+}
+
+/* Menu Hambúrguer */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--fg);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .topbar {
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    height: auto;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 280px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 251, 0.98));
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 0.5rem;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+  
+  .nav-menu.active {
+    right: 0;
+  }
+  
+  .navlink {
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 125, 181, 0.2);
+  }
+  
+  .navlink:hover {
+    background: rgba(255, 125, 181, 0.1);
+    padding-left: 0.5rem;
+  }
+  
+  .navlink:after {
+    display: none;
+  }
+  
+  /* Overlay quando menu aberto */
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .menu-overlay.active {
+    display: block;
+    opacity: 1;
+  }
 }
 .pill {
   display: inline-flex;
@@ -306,6 +434,345 @@ footer {
     min-width: unset;
   }
 }
+
+/* ===== RESPONSIVIDADE TABLET E MOBILE ===== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  main {
+    padding: 1.5rem 1rem 4rem;
+  }
+  
+  .hero {
+    padding-bottom: 100px;
+  }
+  
+  .topbar {
+    gap: 1.5rem;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+  
+  .navlink {
+    font-size: 0.95rem;
+  }
+  
+  .countdown-card {
+    padding: 0.8rem 1rem;
+    gap: 0.8rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .segment {
+    min-width: 90px;
+    padding: 0.5rem 0.6rem;
+  }
+  
+  .segment strong {
+    font-size: 1.6rem;
+  }
+  
+  .grid.cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* Mobile (até 768px) */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+  }
+  
+  main {
+    padding: 1rem 0.75rem 3rem;
+  }
+  
+  /* Topbar responsivo - já tratado no menu hambúrguer */
+  
+  /* Hero responsivo */
+  .hero-landing {
+    min-height: 75vh;
+    padding: 1rem;
+  }
+  
+  .hero-landing .title-elegant {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+    margin: 0 0.5rem 0.5rem;
+  }
+  
+  /* Countdown responsivo */
+  .countdown-card {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.8rem 0.6rem !important;
+    width: 95% !important;
+    justify-content: center;
+  }
+  
+  .countdown {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .segment {
+    min-width: 60px !important;
+    padding: 0.4rem 0.5rem !important;
+    flex: 0 0 auto;
+  }
+  
+  .segment strong {
+    font-size: 1.3rem !important;
+  }
+  
+  .segment span {
+    font-size: 0.7rem !important;
+  }
+  
+  .divider {
+    height: 30px !important;
+    display: block !important;
+    width: 1px;
+  }
+  
+  /* Botões responsivos */
+  .cta-row {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0 1rem;
+  }
+  
+  .btn-elegant {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.2rem;
+  }
+  
+  .pill {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Grid responsivo */
+  .grid.cols-3 {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  /* Cards */
+  .card {
+    padding: 1rem;
+  }
+  
+  /* Section */
+  .section {
+    margin: 2rem 0;
+    scroll-margin-top: 70px;
+  }
+  
+  .section h2 {
+    font-size: 1.5rem;
+    margin: 0 0 0.8rem;
+  }
+  
+  /* Menu vertical mobile */
+  .vmenu {
+    position: static;
+    flex-direction: row;
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+  }
+  
+  .vbtn {
+    min-width: unset;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.85rem;
+    flex: 1;
+  }
+  
+  /* Time countdown mobile */
+  .time {
+    min-width: 60px;
+    padding: 0.4rem 0.6rem;
+  }
+  
+  .time strong {
+    font-size: 1.2rem;
+  }
+  
+  .time span {
+    font-size: 0.7rem;
+  }
+  
+  /* FAQ mobile */
+  .faq-question {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .faq-answer {
+    padding: 0 1rem;
+  }
+  
+  .faq-item.active .faq-answer {
+    padding: 0 1rem 1rem 1rem;
+  }
+  
+  .faq-answer p {
+    font-size: 0.9rem;
+  }
+  
+  /* Formulários mobile */
+  #formRSVP input,
+  #formRSVP textarea,
+  #formRecado input,
+  #formRecado textarea {
+    font-size: 16px; /* Previne zoom no iOS */
+    padding: 0.7rem;
+  }
+  
+  #formRSVP button[type="submit"],
+  #formRecado button[type="submit"] {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Polaroids mobile */
+  .polaroids {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .polaroids img {
+    height: 140px;
+  }
+  
+  /* Badges */
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  /* Vídeo da câmera responsivo */
+  #cam {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  /* Iframe do mapa responsivo */
+  iframe {
+    max-width: 100%;
+  }
+  
+  /* Lista de confirmados e recados */
+  #listaConfirmados,
+  #listaRec {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+}
+
+/* Mobile pequeno (até 480px) */
+@media (max-width: 480px) {
+  .hero-landing .title-elegant {
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+  }
+  
+  .countdown-card {
+    width: 98% !important;
+    padding: 0.6rem 0.4rem !important;
+    gap: 0.25rem !important;
+    flex-wrap: wrap;
+  }
+  
+  .segment {
+    min-width: 50px !important;
+    padding: 0.3rem 0.35rem !important;
+  }
+  
+  .segment strong {
+    font-size: 1.1rem !important;
+  }
+  
+  .segment span {
+    font-size: 0.6rem !important;
+  }
+  
+  .divider {
+    height: 25px !important;
+  }
+  
+  .section h2 {
+    font-size: 1.3rem;
+  }
+  
+  .grid.cols-3 {
+    gap: 0.6rem;
+  }
+  
+  .vbtn {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  
+  .card {
+    padding: 0.8rem;
+  }
+  
+  .faq-question {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .polaroids {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn-elegant {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero-landing {
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+  
+  .countdown-card {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .segment {
+    flex: 1 1 auto;
+  }
+}
+
+/* Ajustes para touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .pill,
+  .vbtn,
+  .btn-elegant,
+  .faq-question {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Aumentar área de toque */
+  .faq-question {
+    min-height: 48px;
+  }
+  
+  .pill {
+    min-height: 44px;
+  }
+}
 /* Overrides para hero elegante e navbar centralizada */
 .topbar {
   position: sticky;
@@ -416,6 +883,42 @@ footer {
 }
 
 /* ===== ESTILOS RSVP / CONFIRMADOS ===== */
+
+/* Estilos base para inputs e textareas */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--fg);
+  transition: all 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 125, 181, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+button {
+  font-family: Poppins, sans-serif;
+  border: none;
+  cursor: pointer;
+}
+
 #listaConfirmados {
   display: grid;
   gap: 0.8rem;
