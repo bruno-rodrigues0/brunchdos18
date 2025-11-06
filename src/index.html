@@ -18,10 +18,12 @@
 
   <!-- Topbar estilo Sims: HOME / STORE / EVENTS → aqui: Home / Menu / Agenda -->
   <nav class="topbar" id="topbar">
-    <a href="#home" class="navlink" data-goto="#home">HOME</a>
-    <a href="#rsvp" class="navlink" data-goto="#rsvp">RSVP</a>
-    <a href="#galeria" class="navlink" data-goto="#galeria">GALLERY</a>
-    <a href="#about" class="navlink" data-goto="#home">ABOUT</a>
+    <a href="#menu" class="navlink" data-goto="#home">CARDAPIO</a>
+    <a href="#agenda" class="navlink" data-goto="#galeria">ROTEIRO</a>
+    <a href="#recados" class="navlink" data-goto="#home">RECADOS</a>
+    <a href="#fotinho" class="navlink" data-goto="#home">PHOTOBOOTH</a>
+    <a href="#mapa" class="navlink" data-goto="#home">LOCAL</a>
+       <a href="#faq" class="navlink" data-goto="#home">FAQ</a>
   </nav>
 
   <!-- Menu vertical (seções principais) -->
@@ -30,7 +32,7 @@
     <!-- HERO / HOME -->
     <section id="home" class="hero hero-landing section">
       <div>
-        <h1 class="title-elegant">18TH BIRTHDAY<br>BRUNCH</h1>
+        <h1 class="title-elegant">BRUNCH DOS<br>18 ANOS</h1>
         <div class="countdown-card">
           <div class="segment"><strong id="dDD">23</strong><span>DIAS</span></div>
           <div class="divider"></div>
@@ -46,6 +48,19 @@
       </div>
     </section>
 
+    <!-- BEM-VINDO -->
+    <section id="bemvindo" class="section">
+      <div class="card" style="max-width: 1200px; margin: 0 auto; padding: 2rem; text-align: center;">
+        <h2 style="margin-top: 0; color: var(--accent);">Você foi convidado! 💌</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--fg); margin: 1.5rem 0;">
+          Olá! então, esse site é um <strong>conviteee!</strong> e você foi escolhido a dedo (uhum, sinta-se especial) 
+          pra participar do meu aniversário em Pindaí (é, Pindaí). No dia <strong>19</strong>, vai ser um brunch, amou? 
+          Por favor não deixe de participar e <strong>confirme sua presença aqui pelo site</strong>. 
+          Qualquer pergunta acesse o FAQ no fim dessa página. ✨
+        </p>
+      </div>
+    </section>
+
     <!-- MENU -->
     <section id="menu" class="section">
       <h2>Cardápio do Brunch</h2>
@@ -53,23 +68,24 @@
         <div class="card">
           <h3>Doces</h3>
           <ul>
-            <li>Mini churros <span class="badge">favorito</span></li>
-            <li>Waffles com frutas <span class="badge" style="background:#8bc34a">veg</span></li>
-            <li>Panquecas com mel</li>
+            <li>Bolo <span class="badge">favorito</span></li>
+            <li>Cookies</li>
+            <li>Pudim</li>
+            <li>Bolo de aniversário 🎂</li>
           </ul>
         </div>
         <div class="card">
           <h3>Salgados</h3>
           <ul>
-            <li>Mini sanduíches (opção sem lactose)</li>
-            <li>Quiche de queijo</li>
-            <li>Tábua de frios</li>
+            <li>Mini pizza</li>
+            <li>Pão de queijo</li>
+            <li>Salgados variados</li>
+            <li>Torradas</li>
           </ul>
         </div>
         <div class="card">
           <h3>Bebidas</h3>
           <ul>
-            <li>Chá gelado de pêssego</li>
             <li>Sucos naturais</li>
             <li>Refrigerantes</li>
           </ul>
@@ -81,9 +97,9 @@
     <section id="agenda" class="section">
       <h2>Roteiro do dia</h2>
       <div class="grid cols-3">
-        <div class="card"><strong>15:00</strong> – Recepção & fotos</div>
-        <div class="card"><strong>16:00</strong> – Quiz relâmpago</div>
-        <div class="card"><strong>17:00</strong> – Parabéns & sobremesas</div>
+        <div class="card"><strong>13:30</strong> – Pegar o carro de linha</div>
+        <div class="card"><strong>14:00</strong> – Inicio do brunch</div>
+        <div class="card"><strong>19:00</strong> – Churrasco</div>
       </div>
     </section>
 
@@ -94,7 +110,7 @@
         <!-- Formulário de confirmação -->
         <div class="card">
           <h3>Confirmar presença</h3>
-          <form id="formRSVP">
+          <!-- <form id="formRSVP"> -->
             <input 
               id="nomeRSVP" 
               type="text" 
@@ -125,16 +141,6 @@
       </div>
     </section>
 
-    <!-- QUIZ localStorage -->
-    <section id="quiz" class="section">
-      <h2>Quiz: Me conhece mesmo?</h2>
-      <div class="card quiz">
-        <div id="quizBox"></div>
-        <button class="pill is-active" id="submitQuiz">Enviar respostas</button>
-        <p id="quizOut" class="subtitle" style="margin-top:1rem"></p>
-      </div>
-    </section>
-
     <!-- RECADOS localStorage -->
     <section id="recados" class="section">
       <h2>Livro de Recados</h2>
@@ -152,16 +158,6 @@
             <!-- itens -->
           </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- GALERIA Polaroid -->
-    <section id="galeria" class="section">
-      <h2>Galeria (polaroids)</h2>
-      <div class="polaroids" id="polas">
-        <figure style="--rot:-2.5deg"><img src="assets/p1.jpg" alt="Foto 1"><figcaption>Primeiro café</figcaption></figure>
-        <figure style="--rot:1.2deg"><img src="assets/p2.jpg" alt="Foto 2"><figcaption>GG no jogo</figcaption></figure>
-        <figure style="--rot:-1.8deg"><img src="assets/p3.jpg" alt="Foto 3"><figcaption>Dia de sol</figcaption></figure>
       </div>
     </section>
 
@@ -192,11 +188,104 @@
         </div>
       </div>
     </section>
+
+    <!-- FAQ - Perguntas Frequentes -->
+    <section id="faq" class="section">
+      <h2>Perguntas Frequentes</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question" data-faq="0">
+            <span>⏰ Que horas começa?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>O brunch começa às 2 da tarde mas é melhor vc vir antes. O brunch não tem fim, então quanto antes vc chegar melhor (Não sei se fez sentido).</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" data-faq="0">
+            <span>🎂 Seu aniverśario não era dia 18?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim, ainda é! Porém, devido eventos avaliativos que terão no dia, achei mais conveniente comemorarmos no dia 19 (mesmo que seja um número feio).</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" data-faq="1">
+            <span>� Como caralhos eu vou pra Pindaí porra?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Vocês podem vir para Pindaí de carro de linha, eles ficam disponíveis pra viagem na frente de dona Dedé, uma galera com blusa branca e colarim vermelho, ou azul e laranja. É 20 reais, complicado, mas vale a penaaa.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" data-faq="1">
+            <span>🏠 E pra voltar de Pindaí pra minha casa?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Então, cês vão dormir aqui em casa e vamos pra escola juntos no outro dia, ou não dormir também, é uma opção.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" data-faq="1">
+            <span>🤨 Até parece né porra.</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Ah vai ser legal man, só se vive uma vez.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" data-faq="2">
+            <span>� Posso ir com qualquer roupa?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Naaaaao, você tem que vir usando algo rosa, ou com algo rosa. Um cachecol, as unhas, uma gravata, um sapato, mas tem que vir com algo rosa.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" data-faq="3">
+            <span>🎁 Precisa levar presente?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Se quiser sim, mano.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" data-faq="4">
+            <span>🥗 Tem restrições alimentares?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Vai se fuder man.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" data-faq="5">
+            <span>📱 Posso levar acompanhante?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>NÃO, CARALHO, É EXCLUSIVO.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <small>Feito com 💖 em HTML/CSS/JS. Personalize as imagens na pasta <code>assets/</code>.</small>
-  </footer>
   <script src="./js/firebase.js"></script>
   <script src="./js/index.js"></script>
 </body>
